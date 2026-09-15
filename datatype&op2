@@ -1,0 +1,30 @@
+Q.
+Implement a program to find the area of a circle by using the formula given below and display the calculated area. 
+
+Area = pi*radius*radius 
+
+The value of pi is 3.14
+
+Ans:
+class Tester {
+	public static void main(String[] args) {
+	    float pi=3.14f;
+	    int r=4;
+		float area=pi*radius*radius ;
+		System.out.println(area);
+	}
+}
+
+Q2.
+  Implement a program to convert temperature from Fahrenheit to Celsius degree by using the formula given below and display the converted value. 
+
+C = ((F-32)/9)*5 where, C represents temperature in Celsius and F represents temperature in Fahrenheit.
+
+Ans:
+  class Tester {
+	public static void main(String[] args) {
+	    int F=32;
+		 float C = ((F-32)/9)*5 ;
+		 System.out.printf("%.1f",C);
+	}
+}
