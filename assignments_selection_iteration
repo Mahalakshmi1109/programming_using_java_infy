@@ -1,0 +1,447 @@
+Problem Statement
+
+Q1.Implement a program to display the sum of two given numbers if the numbers are same. If the numbers are not same, display the double of the sum.
+class Tester {
+    public static void main(String[] args) {
+        int num1 = 6;
+        int num2 = 5;
+
+        int sum = num1 + num2;
+
+        if (num1 == num2) {
+            System.out.println(sum);
+        } else {
+            System.out.println(2 * sum);
+        }
+    }
+}
+
+Q2.Quadratic equation is an equation with degree 2 in the form of ax2 +bx + c = 0 where a, b and c are the coefficients.
+Implement a program to solve a quadratic equation.
+
+Find the discriminant value using the formula given below.
+
+discriminant = b2 - 4ac
+
+    If the discriminant is 0, the values of both the roots will be same. Display the value of the root.
+
+    If the discriminant is greater than 0, the roots will be unequal real roots. Display the values of both the roots.
+
+    If the discriminant is less than 0, there will be no real roots. Display the message "The equation has no real root"
+
+Use the formula given below to find the roots of a quadratic equation.
+
+x = (-b ± discriminant)/2a
+
+
+Ans:
+class Tester {
+    public static void main(String[] args) {
+        int a = 1;
+        int b = 4;
+        int c = 4;
+
+        double discriminant = b * b - 4 * a * c;
+
+        if (discriminant == 0) {
+            double root = -b / (2.0 * a);
+            System.out.println("The root is " + root);
+        } 
+        else if (discriminant > 0) {
+            double root1 = (-b + Math.sqrt(discriminant)) / (2.0 * a);
+            double root2 = (-b - Math.sqrt(discriminant)) / (2.0 * a);
+
+            System.out.println("The roots are " + root1 + " and " + root2);
+        } 
+        else {
+            System.out.println("The equation has no real root");
+        }
+    }
+}
+
+Q3.Implement a program to calculate the product of three positive integer values. However, if one of the integers is 7, consider only the values to the right of 7 for calculation. If 7 is the last integer, then display -1.
+
+Note: Only one of the three values can be 7.
+
+
+
+class Tester {
+    public static void main(String[] args) {
+        int a = 6;
+        int b = 7;
+        int c = 5;
+
+        if (a == 7) {
+            System.out.println(b * c);
+        } 
+        else if (b == 7) {
+            System.out.println(c);
+        } 
+        else if (c == 7) {
+            System.out.println(-1);
+        } 
+        else {
+            System.out.println(a * b * c);
+        }
+    }
+}
+
+
+Q4.Implement a program to display the below pattern.
+
+*****
+
+****
+
+***
+
+**
+
+*
+
+class Tester {
+    public static void main(String[] args) {
+        for (int i = 5; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+
+Q5.Implement a program to find and display the least common multiple (LCM) of two whole numbers.
+Least Common Multiple (LCM) of two numbers, num1 and num2 is the smallest positive number that is divisible by both num1 and num2.
+
+class Tester {
+    public static void main(String[] args) {
+        int num1 = 5;
+        int num2 = 10;
+
+        int lcm = (num1 > num2) ? num1 : num2;
+
+        while (lcm % num1 != 0 || lcm % num2 != 0) {
+            lcm++;
+        }
+
+        System.out.println(lcm);
+    }
+}
+
+Q6.Implement a program to check whether a given number is a lucky number.
+
+A lucky number is a number whose sum of squares of every even-positioned digit (starting from the second position) is a multiple of 9.
+
+E.g. - 1623 = 62+32 = 45 is a multiple of 9 and hence is a lucky number.
+
+class Tester {
+    public static void main(String[] args) {
+        int num = 1623;
+        int temp = num;
+        int position = 1;
+        int sum = 0;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+
+            if (position % 2 == 0) {
+                sum = sum + digit * digit;
+            }
+
+            temp = temp / 10;
+            position++;
+        }
+
+        if (sum % 9 == 0) {
+            System.out.println("Lucky Number");
+        } else {
+            System.out.println("Not a Lucky Number");
+        }
+    }
+}
+
+Q7.Implement a program to check whether a given number is an Armstrong number.
+
+An Armstrong number is an n-digit number that is equal to the sum of the nth powers of its individual digits.
+
+E.g.: 371 is an Armstrong number as 33 + 73 + 13=371
+
+        1634 is an Armstrong number as 14 + 64 + 34+ 44=1634
+
+**Hint**
+
+- Use Math.pow(double a, double b) method to calculate the power of a number
+
+
+class Tester {
+    public static void main(String[] args) {
+        int num = 371;
+        int temp = num;
+        int digits = 0;
+        int sum = 0;
+
+        while (temp > 0) {
+            digits++;
+            temp = temp / 10;
+        }
+
+        temp = num;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            sum = sum + (int)Math.pow(digit, digits);
+            temp = temp / 10;
+        }
+
+        if (sum == num) {
+            System.out.println("Armstrong Number");
+        } else {
+            System.out.println("Not an Armstrong Number");
+        }
+    }
+}
+
+Q8.Implement a program to find out whether a number is a seed of another number.
+
+A number X is said to be a seed of number Y if multiplying X by its every digit equates to Y.
+
+E.g.: 123 is a seed of 738 as 123*1*2*3 = 738
+
+
+class Tester {
+    public static void main(String[] args) {
+        int seed = 123;
+        int number = 738;
+
+        int product = seed;
+        int temp = seed;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            product = product * digit;
+            temp = temp / 10;
+        }
+
+        if (product == number) {
+            System.out.println(seed + " is a seed of " + number);
+        } else {
+            System.out.println(seed + " is not a seed of " + number);
+        }
+    }
+}
+
+Q9.Implement a program to find out whether a number is divisible by the sum of its digits. 
+
+Display appropriate messages.
+
+class Tester {
+    public static void main(String[] args) {
+        int num = 2250;
+        int temp = num;
+        int sum = 0;
+
+        while (temp > 0) {
+            sum = sum + temp % 10;
+            temp = temp / 10;
+        }
+
+        if (num % sum == 0) {
+            System.out.println("The number is divisible by the sum of its digits");
+        } else {
+            System.out.println("The number is not divisible by the sum of its digits");
+        }
+    }
+}
+
+
+Q10.Implement a program to check whether a given number is a palindrome.
+
+Palindrome is a sequence that reads the same backwards as forwards.
+
+E.g.: 121, 1331, 2332, 78900987, 123456654321,  etc.
+
+class Tester {
+    public static void main(String[] args) {
+        int num = 1331;
+        int temp = num;
+        int reverse = 0;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            reverse = reverse * 10 + digit;
+            temp = temp / 10;
+        }
+
+        if (num == reverse) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+    }
+}
+
+Q11.Implement a program that displays a message for a given number based on the below conditions.
+
+    If the number is a multiple of 3, display "Zip".
+
+    If the number is a multiple of 5, display "Zap".
+
+    If the number is a multiple of both 3 and 5, display "Zoom",
+    For all other cases, display "Invalid".
+
+ class Tester {
+    public static void main(String[] args) {
+        int num = 15;
+
+        if (num % 3 == 0 && num % 5 == 0) {
+            System.out.println("Zoom");
+        } else if (num % 3 == 0) {
+            System.out.println("Zip");
+        } else if (num % 5 == 0) {
+            System.out.println("Zap");
+        } else {
+            System.out.println("Invalid");
+        }
+    }
+}
+
+Q12.Implement a program to generate and display the next date of a given date.
+
+The date will be provided as day, month and year as shown in the below table.
+
+The output should be displayed in the format: day-month-year.
+
+Assumption: The input will always be a valid date.
+
+class Tester {
+    public static void main(String[] args) {
+        int day = 28;
+        int month = 2;
+        int year = 2024;
+
+        int days;
+
+        if (month == 2) {
+            if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+                days = 29;
+            } else {
+                days = 28;
+            }
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+            days = 30;
+        } else {
+            days = 31;
+        }
+
+        if (day < days) {
+            day++;
+        } else {
+            day = 1;
+            if (month == 12) {
+                month = 1;
+                year++;
+            } else {
+                month++;
+            }
+        }
+
+        System.out.println(day + "-" + month + "-" + year);
+    }
+}
+
+Q13.You have x number of $5 notes and y number of $1 notes. You want to purchase an item for amount z. The shopkeeper wants you to provide exact change. You want to pay using a minimum number of notes. How many $5 notes and $1 notes will you use?
+
+Implement a program to find out how many $5 notes and $1 notes will be used. If an exact change is not possible, then display -1.
+
+class Tester {
+    public static void main(String[] args) {
+        int x = 4;
+        int y = 5;
+        int z = 21;
+
+        int fiveNotes = Math.min(x, z / 5);
+        int remaining = z - (fiveNotes * 5);
+
+        if (remaining <= y) {
+            System.out.println("5 notes: " + fiveNotes);
+            System.out.println("1 notes: " + remaining);
+        } else {
+            System.out.println("-1");
+        }
+    }
+}
+
+Q14.Implement a program to find the number of rabbits and chickens in a farm. Given the number of heads and legs of the chickens and rabbits in a farm, identify and display the number of chickens and rabbits in the farm.
+
+If the given input cannot make a valid number of rabbits and chickens, then display an appropriate message.
+
+class Tester {
+    public static void main(String[] args) {
+        int heads = 35;
+        int legs = 94;
+
+        int rabbits = (legs - 2 * heads) / 2;
+        int chickens = heads - rabbits;
+
+        if (rabbits >= 0 && chickens >= 0 && 4 * rabbits + 2 * chickens == legs) {
+            System.out.println("Number of chickens: " + chickens);
+            System.out.println("Number of rabbits: " + rabbits);
+        } else {
+            System.out.println("The given input is invalid");
+        }
+    }
+}
+
+Q15.Food Corner home delivers vegetarian and non-vegetarian meals to its customers based on the order.
+
+A vegetarian combo costs $12 per plate and a non-vegetarian combo costs $15 per plate. Apart from the cost per plate of food, customers are also charged for home delivery based on the distance in kms from the restaurant to the delivery point. The delivery charges are as mentioned below:Given the&#x20;
+type of food, quantity (no. of plates) and the distance in kms from the&#x20;
+restaurant to the delivery point, implement a program to calculate the&#x20;
+final bill amount to be paid by a customer.
+
+
+
+The below information must be used to check the validity of the data provided by the customer: 
+
+- Type of food must be 'V' for vegetarian and 'N' for non-vegetarian.
+- Distance in kms must be greater than 0.
+- Quantity ordered should be minimum 1.
+
+If any of the input is invalid, the bill amount should be displayed as -1.
+
+
+class Tester {
+    public static void main(String[] args) {
+        char foodType = 'V';
+        int quantity = 5;
+        int distance = 7;
+
+        int bill = 0;
+        int deliveryCharge;
+
+        if ((foodType != 'V' && foodType != 'N') || quantity < 1 || distance <= 0) {
+            bill = -1;
+        } else {
+            if (foodType == 'V') {
+                bill = quantity * 12;
+            } else {
+                bill = quantity * 15;
+            }
+
+            if (distance <= 3) {
+                deliveryCharge = 0;
+            } else if (distance <= 6) {
+                deliveryCharge = distance - 3;
+            } else {
+                deliveryCharge = 3 + (distance - 6) * 2;
+            }
+
+            bill = bill + deliveryCharge;
+        }
+
+        System.out.println(bill);
+    }
+}
+
+
+
