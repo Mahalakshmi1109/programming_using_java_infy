@@ -1,0 +1,94 @@
+Q.Consider 
+the class Employee given below for representing employees of an 
+organization. It has 5 different instance variables and a method to 
+calculate the total salary based on the jobLevel.
+
+Salary is calculated in the calculateSalary() method.
+
+Make 
+necessary changes to the class by making all the attributes private and 
+by adding necessary accessor and mutator methods thus bringing in 
+Encapsulation.
+
+
+
+class Employee {
+
+    private int employeeId;
+    private String employeeName;
+    private double salary;
+    private int jobLevel;
+    private String designation;
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public int getJobLevel() {
+        return jobLevel;
+    }
+
+    public void setJobLevel(int jobLevel) {
+        this.jobLevel = jobLevel;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public void calculateSalary() {
+        if (jobLevel == 1) {
+            salary += 1000;
+        } else if (jobLevel == 2) {
+            salary += 2000;
+        } else if (jobLevel == 3) {
+            salary += 3000;
+        }
+    }
+}
+
+class Tester {
+
+    public static void main(String[] args) {
+
+        Employee employee = new Employee();
+
+        employee.setEmployeeId(101);
+        employee.setEmployeeName("Maha");
+        employee.setSalary(50000);
+        employee.setJobLevel(2);
+        employee.setDesignation("Developer");
+
+        employee.calculateSalary();
+
+        System.out.println("Employee ID: " + employee.getEmployeeId());
+        System.out.println("Employee Name: " + employee.getEmployeeName());
+        System.out.println("Salary: " + employee.getSalary());
+        System.out.println("Job Level: " + employee.getJobLevel());
+        System.out.println("Designation: " + employee.getDesignation());
+    }
+}
