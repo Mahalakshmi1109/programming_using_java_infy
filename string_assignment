@@ -1,0 +1,168 @@
+Q.Complete the moveSpecialCharacters() method given in the Tester class.
+
+Method Description
+
+moveSpecialCharacters(String str)
+
+Move all the special characters present in the string passed to the method to the end of the string and return the modified string.
+Note: Assume that the input string does not have any space.
+
+Test the functionalities using the main() method of the Tester class. 
+class Tester {
+    public static String moveSpecialCharacters(String str) {
+        StringBuilder mainChars = new StringBuilder();
+        StringBuilder specialChars = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+           
+            if (Character.isLetterOrDigit(ch)) {
+                mainChars.append(ch);
+            } else {
+                specialChars.append(ch);
+            }
+        }
+
+        return mainChars.toString() + specialChars.toString();
+    }
+
+    public static void main(String args[]) {
+        String str = "He@#$llo!*&";
+        System.out.println(moveSpecialCharacters(str)); 
+    }
+}
+
+2.Complete the checkPalindrome() method given in the Tester class.
+
+Method Description
+
+checkPalindrome(String str)
+
+Check whether the string passed to the method is a palindrome or not. 
+
+Return true if the string is palindrome, else return false.
+
+Test the functionalities using the main() method of the Tester class. 
+
+class Tester {
+
+    public static boolean checkPalindrome(String str) {
+        String reverse = "";
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reverse = reverse + str.charAt(i);
+        }
+
+        if (str.equals(reverse)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+
+        String str = "madam";
+
+        System.out.println(checkPalindrome(str));
+    }
+}
+
+3.Complete the reverseEachWord() method given in the Tester class.
+
+Method Description
+
+reverseEachWord(String str)
+
+Reverse each word in the string passed to the method without changing the order of the words and return the modified string.
+Test the functionalities using the main() method of the Tester class.
+
+Note: There should not be any extra blank/white space(s) in the output string.
+
+class Tester {
+    public static String reverseEachWord(String str) {
+        String result = "";
+        String[] words = str.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            String reverse = "";
+            for (int j = words[i].length() - 1; j >= 0; j--) {
+                reverse = reverse + words[i].charAt(j);
+            }
+            result = result + reverse;
+            if (i < words.length - 1) {
+                result = result + " ";
+            }
+        }
+        return result;
+    }
+    public static void main(String[] args) {
+        String str = "Hello World";
+        System.out.println(reverseEachWord(str));
+    }
+}
+
+4.Complete the findHighestOccurrence() method given in the Tester class.
+
+Method Description
+
+findHighestOccurrence(String str)
+
+Find the count of the highest occurring character in the string passed to the method and return the count.
+Test the functionalities using the main() method of the Tester class. 
+
+class Tester {
+    public static int findHighestOccurrence(String str) {
+        int max = 0;
+        for (int i = 0; i < str.length(); i++) {
+            int count = 0;
+            for (int j = 0; j < str.length(); j++) {
+                if (str.charAt(i) == str.charAt(j)) {
+                    count++;
+                }
+            }
+            if (count > max) {
+                max = count;
+            }
+        }
+        return max;
+    }
+    public static void main(String[] args) {
+        String str = "success";
+        System.out.println(findHighestOccurrence(str));
+    }
+}
+
+5.Complete the removeDuplicatesandSpaces() method given in the Tester class.
+
+Method Description
+
+removeDuplicatesandSpaces(String str)
+
+Remove all the duplicate characters and white spaces from the string passed to the method and return the modified string.
+Test the functionalities using the main() method of the Tester class.
+
+class Tester {
+    public static String removeDuplicatesandSpaces(String str) {
+        String result = "";
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch != ' ' && result.indexOf(ch) == -1) {
+                result = result + ch;
+            }
+        }
+        return result;
+    }
+    public static void main(String[] args) {
+        String str = "hello world";
+        System.out.println(removeDuplicatesandSpaces(str));
+    }
+}
+
+
+
+
+
+
+ 
+
+
