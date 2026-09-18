@@ -1,0 +1,329 @@
+1.Implement the class Teacher based on the class diagram and description given below.
+
+
+
+Method Description
+
+Teacher(String teacherName, String subject, double salary)
+
+Initialize the values of all the instance variables appropriately with the values passed
+
+Create a Tester class. Create 4 objects of Teacher class. Create an array of type Teacher store the created objects and display the details of the teachers.
+class Teacher {
+    private String teacherName;
+    private String subject;
+    private double salary;
+    public Teacher(String teacherName, String subject, double salary) {
+        this.teacherName = teacherName;
+        this.subject = subject;
+        this.salary = salary;
+    }
+    public String getTeacherName() {
+        return teacherName;
+    }
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+    public String getSubject() {
+        return subject;
+    }
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+    public double getSalary() {
+        return salary;
+    }
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+}
+class Tester {
+    public static void main(String[] args) {
+        Teacher teacher1 = new Teacher("Alex", "Java Programming", 25000.0);
+        Teacher teacher2 = new Teacher("John", "Data Structures", 30000.0);
+        Teacher teacher3 = new Teacher("Sophia", "DBMS", 28000.0);
+        Teacher teacher4 = new Teacher("Maria", "Web Development", 27000.0);
+        Teacher[] teachers = { teacher1, teacher2, teacher3, teacher4 };
+        for (Teacher teacher : teachers) {
+            System.out.println("Name : " + teacher.getTeacherName() + ", Subject : " + teacher.getSubject() + ", Salary : " + teacher.getSalary());
+        }
+    }
+}
+
+2.Find and return the average salary, number of salaries greater than the average salary and number of salaries lesser than the average salary from the salary array passed to the findDetails() method. Return a double array containing average salary in index position 0, number of salaries greater than the average salary in index position 1 and number of salaries lesser than the average salary in index position 2. Implement the logic inside findDetails() method.
+
+Test the functionalities using the main method of the Tester class.
+
+class Tester {
+
+    public static double[] findDetails(double[] salary) {
+        double sum = 0;
+        for (double sal : salary) {
+            sum += sal;
+        }
+
+        double average = sum / salary.length;
+        double countGreater = 0;
+        double countLesser = 0;
+
+        for (double sal : salary) {
+            if (sal > average) {
+                countGreater++;
+            } else if (sal < average) {
+                countLesser++;
+            }
+        }
+
+        return new double[] { average, countGreater, countLesser };
+    }
+
+    public static void main(String[] args) {
+        double[] salary = { 23500.0, 25080.0, 28760.0, 22340.0, 19890.0 };
+        double[] details = findDetails(salary);
+
+        System.out.println("Average salary: " + details[0]);
+        System.out.println("Number of salaries greater than the average salary: " + details[1]);
+        System.out.println("Number of salaries lesser than the average salary: " + details[2]);
+    }
+}
+
+3.Find the next 15 leap years from the year passed as parameter to the findLeapYears() method. Include the year passed as parameter if it is a leap year. Implement the logic inside findLeapYears() method and return an int array containing all the leap years.
+
+ 
+
+Test the functionalities using the main method of the Tester class.
+
+[Hint: Any year which is divisible by 4 and not by 100 are leap years. Otherwise, any year which is divisible by 400 is also a leap year]
+
+
+class Tester {
+
+    public static int[] findLeapYears(int year) {
+        int[] leapYears = new int[15];
+        int count = 0;
+
+        while (count < 15) {
+            // Check leap year condition:
+            // Divisible by 4 and not by 100, OR divisible by 400
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                leapYears[count] = year;
+                count++;
+            }
+            year++;
+        }
+
+        return leapYears;
+    }
+
+    public static void main(String[] args) {
+        int year = 2000;
+        int[] leapYears = findLeapYears(year);
+
+        for (int index = 0; index < leapYears.length; index++) {
+            System.out.println(leapYears[index]);
+        }
+    }
+}
+
+4.The results of a mid-term assessment have been declared. The marks scored by a student in different subjects are stored in an array.
+
+You need to find the corresponding grade for each subject by implementing the class Student based on the class diagram and description given below.
+
+
+
+Method description
+
+Student(int[] marks)
+
+Initialize the value of the instance variable marks with the value passed to the constructor.
+
+Initialize the grade with the same size as marks array.
+
+findGrade()
+
+Find the corresponding grade for each marks present in the marks array based on the below details and update the grade array
+Assumption: The minimum marks can be 0 and maximum marks can be 100.
+
+Test the functionalities using the main method of the Tester class.
+
+ class Student {
+    private int[] marks;
+    private char[] grade;
+
+    public Student(int[] marks) {
+        this.marks = marks;
+        this.grade = new char[marks.length];
+    }
+
+    public void findGrade() {
+        for (int i = 0; i < marks.length; i++) {
+            if (marks[i] >= 92) {
+                grade[i] = 'E';
+            } else if (marks[i] >= 85) {
+                grade[i] = 'A';
+            } else if (marks[i] >= 70) {
+                grade[i] = 'B';
+            } else if (marks[i] >= 65) {
+                grade[i] = 'C';
+            } else {
+                grade[i] = 'D';
+            }
+        }
+    }
+
+    public int[] getMarks() {
+        return marks;
+    }
+
+    public void setMarks(int[] marks) {
+        this.marks = marks;
+    }
+
+    public char[] getGrade() {
+        return grade;
+    }
+
+    public void setGrade(char[] grade) {
+        this.grade = grade;
+    }
+}
+
+class Tester {
+    public static void main(String[] args) {
+        int[] marks = { 79, 87, 97, 65, 78, 99, 66 };
+        Student student = new Student(marks);
+        student.findGrade();
+
+        System.out.println("Grades corresponding to the marks are : ");
+        char[] grades = student.getGrade();
+        for (int index = 0; index < grades.length; index++) {
+            System.out.print(grades[index] + " ");
+        }
+    }
+}
+
+5.Implement the method findNumbers accepting two numbers num1 and num2 based on the conditions given below:
+
+Validate that num1 should be less than num2
+
+If the validations are successful
+
+populate all the 2 digit positive numbers between num1 and num2 into the provided numbers array if
+
+sum of the digits of the number is a multiple of 3
+
+number is a multiple of 5
+
+Return the numbers array
+Test the functionalities using the main method of the Tester class.
+
+class Tester {
+    public static int[] findNumbers(int num1, int num2) {
+        int[] numbers = new int[6];
+        int index = 0;
+
+        if (num1 < num2) {
+            for (int i = num1; i <= num2; i++) {
+                // Check if 2-digit positive number
+                if (i >= 10 && i <= 99) {
+                    int sumOfDigits = (i / 10) + (i % 10);
+                    // Check conditions: sum of digits multiple of 3 & number multiple of 5
+                    if (sumOfDigits % 3 == 0 && i % 5 == 0) {
+                        if (index < numbers.length) {
+                            numbers[index] = i;
+                            index++;
+                        }
+                    }
+                }
+            }
+        }
+
+        return numbers;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 30;
+        int[] numbers = findNumbers(num1, num2);
+        if (numbers[0] == 0) {
+            System.out.println("There is no such number!");
+        } else {
+            for (int index = 0; index <= numbers.length - 1; index++) {
+                if (numbers[index] == 0) {
+                    break;
+                }
+                System.out.println(numbers[index]);
+            }
+        }
+    }
+}
+
+6.Find and return the count of the adjacent occurrence of a number in the numbers array passed to the findTotalCount() method. Implement the logic inside findTotalCount() method.
+
+Test the functionalities using the main method of the Tester class.
+class Tester {
+    public static int findTotalCount(int[] numbers) {
+        int count = 0;
+        
+        for (int i = 0; i < numbers.length - 1; i++) {
+            if (numbers[i] == numbers[i + 1]) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = { 1, 1, 5, 100, -20, 6, 0, 0 };
+        System.out.println("Count of adjacent occurrence: " + findTotalCount(numbers));
+    }
+}
+
+7.Find out all the possible permutations of the characters in the string passed to the method findPermutations(). Implement the logic inside findPermutations() method and return a string array containing all the permutations.
+
+Assumption: The length of the string will be 3.
+
+E.g.: For the string "abc", the permutations will be abc, acb, bac, bca, cab and cba.
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Tester {
+    public static String[] findPermutations(String str) {
+        if (str == null || str.length() != 3) {
+            return new String[0];
+        }
+
+        List<String> permutationsList = new ArrayList<>();
+        char[] chars = str.toCharArray();
+
+        // Generate all index combinations for length 3
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == j) continue;
+                for (int k = 0; k < 3; k++) {
+                    if (i == k || j == k) continue;
+
+                    String perm = "" + chars[i] + chars[j] + chars[k];
+
+                    // Avoid duplicate permutations when input contains repeating characters
+                    if (!permutationsList.contains(perm)) {
+                        permutationsList.add(perm);
+                    }
+                }
+            }
+        }
+
+        return permutationsList.toArray(new String[0]);
+    }
+
+    public static void main(String args[]) {
+        String str = "abc";
+        String permutations[] = findPermutations(str);
+        for (String permutation : permutations) {
+            if (permutation != null)
+                System.out.println(permutation);
+        }
+    }
+}
